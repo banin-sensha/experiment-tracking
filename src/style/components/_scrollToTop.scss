@@ -1,0 +1,16 @@
+.scroll-to-top-btn {
+    background-color: $primary;
+    position: fixed;
+    bottom: 130px;
+    z-index: 100;
+    @include media-breakpoint-up(sm)  {
+        bottom: 20px;
+    }
+    right: -1000px;
+    box-shadow: 3px 4px 10px #666;
+    border-radius: 50%;
+    transition: right 0.5s ease-out;
+    &.open {
+        right: 20px;
+    }
+}

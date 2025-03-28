@@ -1,0 +1,16 @@
+.button-style {
+  color: #004098;
+  background: #ffffff;
+}
+
+.generic-cancel-button {
+  background: none;
+  border: none;
+  color: #004098;
+  width: 100%;
+  &:hover {
+    background: none;
+    border: none;
+    color: #004098;
+  }
+}

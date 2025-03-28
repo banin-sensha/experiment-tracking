@@ -1,0 +1,321 @@
+@import "colors";
+@import "~bootstrap/scss/bootstrap";
+@import "~react-toastify/scss/main";
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+@import '~react-dates/lib/css/_datepicker.css';
+@import "spacing";
+@import "fonts";
+@import "flex";
+@import "dimensions";
+@import "loaders";
+
+
+body {
+    font-family: $default-font-family, sans-serif;
+    padding-top: 75px;
+    color: $black;
+    overflow-x: hidden;
+    // background-color: $main-bg !important;
+}
+
+
+.canvasjs-chart-credit {
+    display: none;
+}
+
+.block {
+    display: block;
+}
+
+
+.no-data {
+    color: $dashboard-section-title-color;
+}
+
+.Toastify__close-button {
+    margin-top: 12px;
+}
+
+.Toastify__toast--error {
+    background: $danger;
+}
+
+.Toastify__toast--success {
+    background: $success;
+}
+
+// Tabs animation
+
+.tab-pane { 
+    &.active {
+        animation-name: fadeIn; 
+        animation-duration: 300ms; 
+        animation-timing-function: linear; 
+    }
+}
+
+@keyframes fadeIn { 
+    from { 
+        opacity: 0;
+    } 
+    to { 
+        opacity: 1; 
+    } 
+}
+
+::placeholder {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    color: $placeholder-color;
+}
+  
+.form-control {
+    border-top: 0 solid transparent !important;
+    border-left: 0 solid transparent !important;
+    border-right: 0 solid transparent !important;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding-left: 0px;
+    padding-right: 0px;
+
+    &:read-only {
+        cursor: not-allowed;
+        // background-color: $white;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        // background-color: $white;
+    }
+}
+
+.form-control:focus {
+    box-shadow: none;
+    &:invalid:focus {
+        box-shadow: none;
+    }
+    &.is-invalid {
+        &:focus {
+            box-shadow: none;
+        }
+    }
+}
+
+.canvasjs-chart-tooltip {
+    &>div {
+        &>span {
+            max-width: 140px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: inline-block;
+            float: left;
+        }
+    }
+    
+}
+
+.nav-item {
+    cursor: pointer ;
+}
+
+.sidebar {
+    background: $nav-bar-background;
+    max-width: 250px;
+    width: 16.6666666%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    top: 55px;
+    @media (max-width: 764px) { 
+        display: none;
+    }
+
+   
+
+    .nav-item {
+        margin-left: -30px;
+        margin-right: -30px;
+        padding-left: 15px;
+        border-left: 3px solid transparent;
+        transition: all .2s cubic-bezier(0.075, 0.82, 0.165, 1);
+        &.active {
+            border-left-color: #fff; 
+        }
+
+        &.menu-heading {
+            border-bottom: 1px solid $white;
+            margin-left: -15px;
+            padding-left: 0px;
+        }
+    }
+}
+
+.border-radius-5  {
+    border-radius: 5px;
+}
+
+.border-radius-0  {
+    border-radius: 0px;
+}
+
+
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+ 
+::-webkit-scrollbar-track {
+  background: #ddd;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #666; 
+}
+
+textarea {
+    color: #495057;
+    border-color: #ced4da;
+    resize: none;
+}
+
+.form-control {
+    // &:disabled {
+    //     background-color: #fefefe;
+    // }
+    // &[readOnly] {
+    //     background-color: #fefefe;
+    // }
+}
+
+.fc-button-primary {
+    @extend .btn-primary;
+    transition: box-shadow 0.5s;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+
+    &:hover {
+        @extend .btn-primary;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3) !important;
+    }
+}
+
+.profit {
+    color: $success;
+}
+
+.loss {
+    color: $liability-title-color; 
+}
+
+.line-chart-growth {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    float: left;
+    margin-right: 10px;
+    margin-left: -25px;
+
+    &.Down {
+        transform: rotate(70deg);
+    }
+}
+
+.chart-x-axis {
+    border-top: 2px solid #c3c3c3;
+}
+
+// Reset all border-radius to 0
+.card {
+    border-radius: 0;
+}
+
+.btn {
+    border-radius: 0;
+
+    transition: box-shadow 0.5s;
+
+    &:hover {
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3) !important;
+    }
+}
+
+.full-page-row {
+    @include media-breakpoint-up(sm)  {
+        min-height: calc(100vh - 55px);
+    }
+
+}
+
+.list-group-item {
+    border: 0;
+    border-left: 3px solid transparent;
+    transition: all 0.2s linear;
+    &.active {
+        border-left-color: $primary;
+        color: #000000;
+        background-color: rgba($color: $primary, $alpha: 0.1);
+    }
+}
+
+.btn-primary {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.btn-outline-primary {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.btn-outline-danger {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+
+.animate-color-primary-to-light {
+    color: $primary;
+    animation: changeColors 2s infinite;
+}
+
+@keyframes changeColors {
+    20% {
+        color: rgba($color: $primary, $alpha: 0.8);
+    }
+  
+    40% {
+        color: rgba($color: $primary, $alpha: 0.6);
+    }
+  
+    60% {
+        color: rgba($color: $primary, $alpha: 0.4);
+    }
+  
+    80% {
+        color: rgba($color: $primary, $alpha: 0.6);
+    }
+  
+    to {
+        color: rgba($color: $primary, $alpha: 0.8);
+    }
+}
+
+.dropdown-item {
+    &.active {
+        color: #212529;
+        background-color: transparent;
+        outline: 0;
+    }
+
+    &:active {
+        color: #212529;
+        background-color: transparent;
+        outline: 0;
+    }
+}
+
+.overflow-x-hidden {
+    overflow-x: hidden;
+}

@@ -1,0 +1,29 @@
+@import '../../style/colors';
+
+.login-container {
+    padding: 40px;
+    .login-card-body {
+        height: 450px;
+    }
+    .login-signup-card-links {
+        margin-top: 15px;
+        a {
+            color: $link-color;
+            text-decoration: underline;
+        }
+    }
+
+    @media (max-width: 320px) { 
+        & {
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+        }
+    }
+
+    @media (max-width: 360px) { 
+        & {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+}
