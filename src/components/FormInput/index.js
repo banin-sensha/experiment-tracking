@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import className from 'classnames';
-import { FontAwesomeIcon, faSearch } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faSearch} from '@fortawesome/free-solid-svg-icons';
 
 
 export default ({

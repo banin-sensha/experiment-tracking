@@ -19,8 +19,8 @@ export const SignupLoginTab = ({ activeTab }) => {
 
         <NavItem>
         <NavLink 
-            className={classNames({ active: activeTab === 'singup' })}
-            to="/register"
+            className={classNames({ active: activeTab === 'signup' })}
+            to="/signup"
         >
             Sign up
         </NavLink> 

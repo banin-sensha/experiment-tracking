@@ -6,14 +6,21 @@ import { renderFormInput } from '../../utils/helper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import _ from 'lodash';
+import { showSuccess, showSuccessAndRedirect } from '../../utils/toast_helper';
+import { useHistory } from 'react-router-dom';
 
 
-const Login = () => {
+const Signup = () => {
+    const history = useHistory();
 
     const onSubmit = (values) => {
+        console.log('values: ', values);
         if (!_.isEmpty(values)) {
-            window.location.href="/experiment-tracking/dashboard"
+            showSuccessAndRedirect("Signed Up Successfully", () => {
+                history.push("/login");
+            });
         }
+
     }
 
     return (
@@ -23,7 +30,7 @@ const Login = () => {
               <Card className="shadow mt-20x">
                 <CardBody className="login-card-body pb-10x pl-20x pr-20x pt-20x">
                   <div className="text-center">
-                    <SignupLoginTab activeTab="login" />
+                    <SignupLoginTab activeTab="signup" />
                   </div>
                   <Form onSubmit={onSubmit}>
                     {({handleSubmit, submitting, invalid}) => (
@@ -51,7 +58,7 @@ const Login = () => {
                                 <FontAwesomeIcon icon={faSpinner} className="fa-spin" />
                             }
                             {
-                                submitting ? 'Logging in': 'Login'
+                                submitting ? 'Logging in': 'Sign up'
                             }
                         </Button>
                     </form>
@@ -66,4 +73,4 @@ const Login = () => {
       )
 }
 
-export default Login;
+export default Signup;
