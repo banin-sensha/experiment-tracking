@@ -1,10 +1,12 @@
 import React from 'react';
 
+import TopToobar from '../TopToolbar/TopToolbar';
+
 
 const Dashboard = () => {
     return (
         <div>
-            Dashboard
+            <TopToobar />
         </div>
 
     );

@@ -6,6 +6,7 @@ import { renderFormInput } from '../../utils/helper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import _ from 'lodash';
+import "./Login.scss"
 
 
 const Login = () => {
