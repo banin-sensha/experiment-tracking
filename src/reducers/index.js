@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux';
+import LoginReducer from "./reducer_login";
+import ProjectReducer from "./reducer_project";
 
 const appReducers = combineReducers({
     login: LoginReducer,
+    project: ProjectReducer
 
 });
 
@@ -9,9 +12,6 @@ const appReducers = combineReducers({
 const initialState = appReducers({}, {});
 
 const rootReducer = (state, action) => {
-	if (action.type === LOGOUT) {
-		state = initialState; // Clear all state on logout
-	}
 	return appReducers(state, action);
 }
 
