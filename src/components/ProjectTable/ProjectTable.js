@@ -12,7 +12,6 @@ const ProjectTable = () => {
     useEffect(() => {
         actions.fetchProjects();
     },[projectData.length]);
-    console.log('reduxState', reduxState);
 
     return (
         <div>

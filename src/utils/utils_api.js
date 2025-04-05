@@ -111,20 +111,20 @@ export const doGetFromSecondaryURL = (url, callBack) => {
 };
 
 export const doGet = (url, callBack) => {
-    const request = axios.get(ROOT_URL + url, {
+    axios.get(ROOT_URL + url, {
       headers: {
         "Content-Type": "application/json"
       },
+    })
+    .then((response) => {
+      // response.data is already a JS object; pass it to the callback
+      if (callBack) {
+        callBack(response);
+      }
+    })
+    .catch((error) => {
+      console.error("error", error);
     });
-    request
-      .then((response) => {
-        if (callBack) {
-          callBack(response);
-        }
-      })
-      .catch(function(error) {
-        console.log("error", error);
-      });
   };
 
 export const doPostFormData = (url, values, callBack) => {

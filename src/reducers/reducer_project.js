@@ -11,7 +11,7 @@ export default function (state = initialState, action) {
         case GET_PROJECTS_REQUEST:
             return {...state, fetchingProjects: true};
         case GET_PROJECTS:
-            return { ...state, projectData: action.payload.data, fetchingProjects:false };
+            return { ...state, projectData: action.payload.data.projects, fetchingProjects:false };
         default:
             return state;
     }
