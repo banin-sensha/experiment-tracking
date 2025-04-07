@@ -14,7 +14,6 @@ const Signup = () => {
     const history = useHistory();
 
     const onSubmit = (values) => {
-        console.log('values: ', values);
         if (!_.isEmpty(values)) {
             showSuccessAndRedirect("Signed Up Successfully", () => {
                 history.push("/login");
