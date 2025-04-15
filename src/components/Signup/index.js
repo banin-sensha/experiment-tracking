@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Row, Col, Card, CardBody, Container, Button } from 'reactstrap';
 import { SignupLoginTab } from '../SignupLoginTab/SignupLoginTab';
 import {Form, Field} from 'react-final-form';
@@ -8,19 +8,28 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import _ from 'lodash';
 import { showSuccess, showSuccessAndRedirect } from '../../utils/toast_helper';
 import { useHistory } from 'react-router-dom';
+import { GlobalContext } from '../App';
 
 
 const Signup = () => {
     const history = useHistory();
 
+    const {actions, reduxState} = useContext(GlobalContext);
+
     const onSubmit = (values) => {
         if (!_.isEmpty(values)) {
+            actions.registerUser(values);
             showSuccessAndRedirect("Signed Up Successfully", () => {
                 history.push("/login");
             });
+            
         }
-
     }
+
+    const {apiKey} = reduxState.register || "";
+    const {userId} = reduxState.userId || 0;
+
+    
 
     return (
         <Container className="login-container pl-35x pr-35x">
@@ -34,6 +43,12 @@ const Signup = () => {
                   <Form onSubmit={onSubmit}>
                     {({handleSubmit, submitting, invalid}) => (
                     <form onSubmit={handleSubmit}>
+                        <Field
+                            name="username"
+                            type="text"
+                            label="User Name"
+                            component={renderFormInput}
+                        />
                         <Field
                             name="email"
                             type="text"
