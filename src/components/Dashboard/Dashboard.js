@@ -1,14 +1,14 @@
 import React from 'react';
 
 import TopToobar from '../TopToolbar/TopToolbar';
-import ProjectTable from '../ProjectTable/ProjectTable';
+import Experiments from '../Experiments/Experiments';
 
 
 const Dashboard = () => {
     return (
         <div>
             <TopToobar />
-            <ProjectTable />
+            <Experiments />
         </div>
 
     );
