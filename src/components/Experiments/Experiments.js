@@ -4,8 +4,13 @@ import { Table } from 'reactstrap';
 import { GlobalContext } from '../App';
 import { faAtom, faDumbbell, faTrailer, faWineGlass, faTable } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './Experiments.scss';
+import Experiment from './Experiment';
+import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Experiments = () => {
+
+    const history = useHistory();
 
     const {actions, reduxState} = useContext(GlobalContext);
     const { experiments } = reduxState.experiments;
@@ -14,7 +19,13 @@ const Experiments = () => {
         actions.fetchExperiments();
     },[experiments.length]);
 
-    console.log('experiments', experiments);
+
+    const openExperiment = (experiment) => {
+        history.push({
+            pathname: `/experiment/${experiment.id}`,
+            state: {experiment: experiment}
+        });
+    }
 
     return (
         <div>
@@ -32,8 +43,7 @@ const Experiments = () => {
                     </thead>
                     <tbody>
                     {(experiments || []).map((experiment, index) => (
-                        
-                        <tr key={index}>
+                        <tr key={index} onClick={() => openExperiment(experiment)} className='experiments'>
                             <td>{experiment.name}</td>
                             <td>{experiment.description}</td>
                             <td>{experiment.lastUpdated}</td>
