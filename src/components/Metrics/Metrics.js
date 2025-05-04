@@ -25,7 +25,7 @@ const Metrics = ({experimentId}) => {
                 <div>
                 {
                     (metrics || []).map((metric, index) => (
-                        <div key={index} onClick={() => displayMetric(index)}>
+                        <div key={index} className= "nav-item" onClick={() => displayMetric(index)}>
                             {generateRandomString(10)}
                         </div>
                     ))
