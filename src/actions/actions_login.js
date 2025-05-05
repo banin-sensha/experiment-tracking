@@ -8,7 +8,7 @@ export const loginUser = (values, callback) => dispatch => {
     const formData = new FormData();
     formData.append('username', values.username);
     formData.append('password', values.password);
-
+    console.log('\n values.password', values.password)
     doPostFormData('/token', formData, (response) => {
         if (callback) {
             callback();

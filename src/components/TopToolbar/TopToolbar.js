@@ -5,7 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./TopToolbar.scss"
 
 const TopToobar = () => {
-
+    const onLogout = () => {
+        localStorage.clear()
+        window.location.href="/experiment-tracking/login"
+    }
+    const onProfile = () => {
+        window.location.href="/experiment-tracking/profile"
+    }
     return (
         <div className='p-15x top-toolbar'>
             <div className='flex flex-between'>
@@ -24,10 +30,10 @@ const TopToobar = () => {
                         <DropdownItem>
                            Settings
                         </DropdownItem>
-                        <DropdownItem>
+                        <DropdownItem onClick={onProfile}>
                             Profile
                         </DropdownItem>
-                        <DropdownItem>
+                        <DropdownItem onClick={onLogout}>
                             Logout
                         </DropdownItem>
                         </DropdownMenu>

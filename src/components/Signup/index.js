@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { Row, Col, Card, CardBody, Container, Button } from 'reactstrap';
-import { SignupLoginTab } from '../SignupLoginTab/SignupLoginTab';
 import {Form, Field} from 'react-final-form';
 import { renderFormInput } from '../../utils/helper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -36,17 +35,15 @@ const Signup = () => {
           <Row>
             <Col md={{ size: 6, offset: 3 }}>
               <Card className="shadow mt-20x">
-                <CardBody className="login-card-body pb-10x pl-20x pr-20x pt-20x">
-                  <div className="text-center">
-                    <SignupLoginTab activeTab="signup" />
-                  </div>
+                <CardBody className="login-card-body pb-30x pl-20x pr-20x pt-30x">
+                <h3 className='mb-4 text-center'>Sign Up</h3>
                   <Form onSubmit={onSubmit}>
                     {({handleSubmit, submitting, invalid}) => (
                     <form onSubmit={handleSubmit}>
                         <Field
                             name="username"
                             type="text"
-                            label="User Name"
+                            label="Username"
                             component={renderFormInput}
                         />
                         <Field
@@ -78,6 +75,9 @@ const Signup = () => {
                     </form>
                 )}
             </Form>
+            <p className='pt-2' style={{ fontSize: '14px', color: '#555' }}>
+              Already a member? <b onClick={() => window.location.href = '/experiment-tracking/login'} style={{ color: '#007bff', cursor: 'pointer' }}>Login</b>
+            </p>
                 </CardBody>
               </Card>
             </Col>
