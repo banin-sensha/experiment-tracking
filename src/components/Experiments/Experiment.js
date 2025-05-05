@@ -11,8 +11,8 @@ const Experiment = () => {
     return (
         <div>
             <TopToobar />
-            <p>{experiment.name}</p>
-            <p>{experiment.description}</p>
+            <h1 className='text-center'>{experiment.name}</h1>
+            <h5 className='text-center'>{experiment.description}</h5>
             <Metrics experimentId = {experiment.id}/>
             
         </div>

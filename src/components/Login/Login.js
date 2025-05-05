@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Row, Col, Card, CardBody, Container, Button } from 'reactstrap';
-import { SignupLoginTab } from '../SignupLoginTab/SignupLoginTab';
 import {Form, Field} from 'react-final-form';
 import { renderFormInput } from '../../utils/helper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,6 +10,14 @@ import { GlobalContext } from '../App';
 
 
 const Login = () => {
+
+    useEffect(() => {
+        const token = localStorage.getItem('access_token');
+        console.log(token)
+        if (token) {
+            window.location.href="/experiment-tracking/dashboard"
+        }
+    }, []);
 
     const {actions, reduxState} = useContext(GlobalContext);
 
@@ -25,10 +32,8 @@ const Login = () => {
           <Row>
             <Col md={{ size: 6, offset: 3 }}>
               <Card className="shadow mt-20x">
-                <CardBody className="login-card-body pb-10x pl-20x pr-20x pt-20x">
-                  <div className="text-center">
-                    <SignupLoginTab activeTab="login" />
-                  </div>
+                <CardBody className="login-card-body pb-30x pl-20x pr-20x pt-30x">
+                  <h3 className='mb-4 text-center'>Login</h3>
                   <Form onSubmit={onSubmit}>
                     {({handleSubmit, submitting, invalid}) => (
                     <form onSubmit={handleSubmit}>
@@ -39,7 +44,7 @@ const Login = () => {
                             component={renderFormInput}
                         />
                         <Field
-                            name="passowrd"
+                            name="password"
                             type="password"
                             label="Password"
                             component={renderFormInput}
@@ -61,6 +66,9 @@ const Login = () => {
                     </form>
                 )}
             </Form>
+            <p className='pt-2' style={{ fontSize: '14px', color: '#555' }}>
+              Don’t have an account? <b onClick={() => window.location.href = '/experiment-tracking/signup'} style={{ color: '#007bff', cursor: 'pointer' }}>Sign Up</b>
+            </p>
                 </CardBody>
               </Card>
             </Col>

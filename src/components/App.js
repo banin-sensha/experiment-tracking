@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import * as actions from "../actions";
 import { connect } from "react-redux";
 import Experiment from './Experiments/Experiment';
+import Profile from './Profile/profile';
 
 
 export const GlobalContext = React.createContext();
@@ -21,11 +22,13 @@ class App extends Component {
                         value={{ actions: this.props, reduxState: this.props.state }}
                     >
                         <Switch>
-                            <Route exact path="/" render={() => <Redirect to="/login" />} />
+                            <Route exact path="/" render={() => <Redirect to="/dashboard" />} />
                             <Route path="/login" component={Login} />
                             <Route path="/signup" component={Signup} />
                             <Route path="/dashboard" component={Dashboard} />
                             <Route path="/experiment/:experimentId" component={Experiment} />
+                            <Route path="/profile" component={Profile} />
+                            
                         </Switch>
                     </GlobalContext.Provider>
                 </BrowserRouter>

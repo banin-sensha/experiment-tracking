@@ -2,9 +2,7 @@
 
 .login-container {
     padding: 40px;
-    .login-card-body {
-        height: 450px;
-    }
+    margin-top: 40px;
     .login-signup-card-links {
         margin-top: 15px;
         a {
@@ -20,10 +18,4 @@
         }
     }
 
-    @media (max-width: 360px) { 
-        & {
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-    }
 }
