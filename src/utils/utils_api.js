@@ -1,9 +1,9 @@
 import axios from "axios";
 import _ from "lodash";
 // import { getFromLocalStorage } from "./utils_storage";
-import { doLogout } from "../actions/actions_login";
 // import { reportErrorToServer } from "./errorReporter";
 import { ROOT_URL } from "../constants";
+import { getFromLocalStorage } from "./utils_storage";
 /**
  *
  * @param {*} act which act to call
@@ -59,9 +59,6 @@ export const doPostToSecondaryURL = (url, values, callBack) => {
           "UNAUTHORIZED ACCESS [Invalid Session]: ",
           sessionid
         );
-        doLogout(() => {
-          location.href = "/argentum/login?action=logout";
-        });
       } else {
         const errorInfo = {
           act: url,
@@ -94,9 +91,6 @@ export const doGetFromSecondaryURL = (url, callBack) => {
           "UNAUTHORIZED ACCESS [Invalid Session]: ",
           sessionid
         );
-        doLogout(() => {
-          location.href = "/argentum/login?action=logout";
-        });
       } else {
         const errorInfo = {
           act: url,
@@ -111,9 +105,11 @@ export const doGetFromSecondaryURL = (url, callBack) => {
 };
 
 export const doGet = (url, callBack) => {
+    const accessToken = getFromLocalStorage("access_token");
     axios.get(ROOT_URL + url, {
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${accessToken}`
       },
     })
     .then((response) => {
@@ -127,7 +123,7 @@ export const doGet = (url, callBack) => {
     });
   };
 
-export const doPostFormData = (url, values, callBack) => {
+export const doPostFormData1 = (url, values, callBack) => {
   const request = axios.post(ROOT_URL_SECONDARY + url, values, {
     headers: {
       "Content-Type": "multipart/form-data",
@@ -148,9 +144,6 @@ export const doPostFormData = (url, values, callBack) => {
           "UNAUTHORIZED ACCESS [Invalid Session]: ",
           sessionid
         );
-        doLogout(() => {
-          location.href = "/argentum/login?action=logout";
-        });
       } else {
         const errorInfo = {
           act: url,
@@ -161,5 +154,23 @@ export const doPostFormData = (url, values, callBack) => {
           callBack(error.response);
         }
       }
+    });
+};
+
+export const doPostFormData = (url, values, callBack) => {
+    const request = axios.post(ROOT_URL + url, values, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+  
+    request
+      .then((response) => {
+        if (callBack) {
+          callBack(response);
+        }
+      })
+      .catch(function(error) {
+        console.log('error', error);
     });
 };

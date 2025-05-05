@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Row, Col, Card, CardBody, Container, Button } from 'reactstrap';
 import { SignupLoginTab } from '../SignupLoginTab/SignupLoginTab';
 import {Form, Field} from 'react-final-form';
@@ -7,14 +7,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import _ from 'lodash';
 import "./Login.scss"
+import { GlobalContext } from '../App';
 
 
 const Login = () => {
 
+    const {actions, reduxState} = useContext(GlobalContext);
+
     const onSubmit = (values) => {
-        if (!_.isEmpty(values)) {
+        actions.loginUser(values, () => {
             window.location.href="/experiment-tracking/dashboard"
-        }
+        });
     }
 
     return (
@@ -30,9 +33,9 @@ const Login = () => {
                     {({handleSubmit, submitting, invalid}) => (
                     <form onSubmit={handleSubmit}>
                         <Field
-                            name="email"
+                            name="username"
                             type="text"
-                            label="Email"
+                            label="Username"
                             component={renderFormInput}
                         />
                         <Field

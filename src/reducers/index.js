@@ -1,11 +1,14 @@
 import { combineReducers } from 'redux';
 import LoginReducer from "./reducer_login";
-import ProjectReducer from "./reducer_project";
+import ExperimentsReducer from "./reducer_experiments";
+import RegisterReducer from "./reducer_register";
+import MetricsReducer from "./reducer_metrics"
 
 const appReducers = combineReducers({
     login: LoginReducer,
-    project: ProjectReducer
-
+    experiments: ExperimentsReducer,
+    register: RegisterReducer,
+    metrics: MetricsReducer
 });
 
 

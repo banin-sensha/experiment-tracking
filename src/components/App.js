@@ -6,6 +6,7 @@ import Dashboard from './Dashboard/Dashboard';
 import { ToastContainer } from 'react-toastify';
 import * as actions from "../actions";
 import { connect } from "react-redux";
+import Experiment from './Experiments/Experiment';
 
 
 export const GlobalContext = React.createContext();
@@ -23,7 +24,8 @@ class App extends Component {
                             <Route exact path="/" render={() => <Redirect to="/login" />} />
                             <Route path="/login" component={Login} />
                             <Route path="/signup" component={Signup} />
-                            <Route path="/dashboard" component={Dashboard} />  
+                            <Route path="/dashboard" component={Dashboard} />
+                            <Route path="/experiment/:experimentId" component={Experiment} />
                         </Switch>
                     </GlobalContext.Provider>
                 </BrowserRouter>
