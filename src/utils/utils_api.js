@@ -174,3 +174,24 @@ export const doPostFormData = (url, values, callBack) => {
         console.log('error', error);
     });
 };
+
+export const doGetBlob = (url, callBack) => {
+  const accessToken = getFromLocalStorage("access_token");
+  axios.get(ROOT_URL + url, {
+    headers: {
+      "Authorization": `Bearer ${accessToken}`,
+    },
+    responseType: 'blob',
+  })
+  .then((response) => {
+    if (callBack) {
+      callBack(response);
+    }
+  })
+  .catch((error) => {
+    console.error("Blob download error:", error);
+    if (callBack) {
+      callBack(null, error);
+    }
+  });
+};

@@ -3,12 +3,14 @@ import LoginReducer from "./reducer_login";
 import ExperimentsReducer from "./reducer_experiments";
 import RegisterReducer from "./reducer_register";
 import MetricsReducer from "./reducer_metrics"
+import profileReducer from './reducer_profile';
 
 const appReducers = combineReducers({
     login: LoginReducer,
     experiments: ExperimentsReducer,
     register: RegisterReducer,
-    metrics: MetricsReducer
+    metrics: MetricsReducer,
+    profile: profileReducer
 });
 
 
