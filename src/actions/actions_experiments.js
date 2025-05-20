@@ -3,9 +3,9 @@ import { doGet, doPost, doGetBlob } from '../utils/utils_api';
 import { GET_EXPERIMENTS, GET_EXPERIMENTS_REQUEST, DOWNLOAD_MODEL_REQUEST, DOWNLOAD_MODEL_FAILURE } from './types';
 
 
-export const fetchExperiments = () => dispatch => {
+export const fetchExperiments = (project_id) => dispatch => {
     dispatch({ type: GET_EXPERIMENTS_REQUEST });
-    doGet('/experiments', (response) => {
+    doGet(`/projects/${project_id}/experiments`, (response) => {
       // Dispatch using the data property from the response
       dispatch({ type: GET_EXPERIMENTS, payload: response.data });
     });
