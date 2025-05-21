@@ -5,6 +5,7 @@ import RegisterReducer from "./reducer_register";
 import MetricsReducer from "./reducer_metrics"
 import ProjectReducer from "./reducer_projects"
 import ProfileReducer from "./reducer_profile"
+import ResourceReducer from "./reducer_resource_usage"
 
 const appReducers = combineReducers({
     login: LoginReducer,
@@ -13,6 +14,7 @@ const appReducers = combineReducers({
     register: RegisterReducer,
     metrics: MetricsReducer,
     profile: ProfileReducer,
+    resourceUsage : ResourceReducer,
 });
 
 

@@ -34,8 +34,8 @@ const Metrics = ({ experimentId }) => {
     }));
 
     return (
-        <div className="w-full px-4">
-            <h3 className="text-2xl font-bold text-center mb-6">Experiment Metrics</h3>
+        <div className="w-full px-4 border border-blue-500 rounded-2xl shadow-lg p-4">
+            <h3 className="text-2xl font-bold text-center mb-6  p-5">Metrics</h3>
 
             {metrics.length === 0 ? (
                 <div className="text-gray-500 text-center border">No metrics available.</div>

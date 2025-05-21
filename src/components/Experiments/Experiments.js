@@ -100,7 +100,7 @@ const Experiments = () => {
             <TopToobar />
             <div className="mt-4 p-5">
                 <div className="d-flex justify-content-between align-items-center mb-4">
-                    <h2>Experiments</h2>
+                    <h2>Runs</h2>
                     <Button className="text-center" color="primary" onClick={handleReportDownload} disabled={isDownloading}>
                         {isDownloading ? (
                             <CircularProgress size={20} color="inherit" />
@@ -116,7 +116,7 @@ const Experiments = () => {
                 <Table striped responsive hover className="align-middle">
                     <thead>
                         <tr>
-                            <th>Experiment Name</th>
+                            <th>Name</th>
                             <th>Description</th>
                             <th>Created At</th>
                             <th style={{ cursor: 'pointer' }} onClick={() => toggleSort('accuracy')}>

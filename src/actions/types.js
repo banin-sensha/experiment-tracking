@@ -26,3 +26,6 @@ export const GET_PROJECTS_FAILURE = 'GET_PROJECTS_FAILURE';
 export const DOWNLOAD_REPORT_REQUEST = "download_report_request";
 export const DOWNLOAD_REPORT_SUCCESS = "download_report_success";
 export const DOWNLOAD_REPORT_FAILURE = "download_report_failure";
+
+export const GET_EXPERIMENT_RESOURCE_REQUEST = "get_experiment_resource_request";
+export const GET_EXPERIMENT_RESOURCE = "get_experiment_resource";

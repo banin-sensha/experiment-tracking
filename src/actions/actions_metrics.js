@@ -6,10 +6,11 @@ import { GET_EXPERIMENT_METRICS, GET_EXPERIMENT_METRICS_REQUEST,
 export const fetchMetrics = (experimentId) => dispatch => {
     dispatch({ type: GET_EXPERIMENT_METRICS_REQUEST });
     doGet(`/experiments/${experimentId}/metrics`, (response) => {
-      // Dispatch using the data property from the response
       dispatch({ type: GET_EXPERIMENT_METRICS, payload: response.data });
     });
   };
+
+
   export const fetchLastEpoch = (experimentId) => dispatch => {
     dispatch({ type: GET_LAST_EXPERIMENT_METRIC_REQUEST });
     return new Promise((resolve, reject) => {

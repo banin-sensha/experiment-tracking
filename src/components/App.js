@@ -28,15 +28,12 @@ class App extends Component {
     
         if (token) {
             try {
-
-                
                 const res = await fetch("http://localhost:8000/validate-token", {
                     method: "GET",
                     headers: {
                         "Authorization": `Bearer ${token}`
                     }
                 });
-                console.log('Authorizing', res)
                 if (res.status !== 200) {
                     console.log('exp')
                     throw new Error("Token expired");
