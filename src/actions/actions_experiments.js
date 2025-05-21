@@ -1,6 +1,7 @@
 import React from 'react';
-import { doGet, doPost, doGetBlob } from '../utils/utils_api';
-import { GET_EXPERIMENTS, GET_EXPERIMENTS_REQUEST, DOWNLOAD_MODEL_REQUEST, DOWNLOAD_MODEL_FAILURE } from './types';
+import { doGet, doGetBlob } from '../utils/utils_api';
+import { GET_EXPERIMENTS, GET_EXPERIMENTS_REQUEST,
+   DOWNLOAD_MODEL_REQUEST, DOWNLOAD_MODEL_FAILURE, DOWNLOAD_MODEL_SUCCESS } from './types';
 
 
 export const fetchExperiments = (project_id) => dispatch => {
@@ -45,7 +46,7 @@ export const fetchExperiments = (project_id) => dispatch => {
       link.click();
       window.URL.revokeObjectURL(url);
   
-      dispatch({ type: 'DOWNLOAD_MODEL_SUCCESS' });
+      dispatch({ type: DOWNLOAD_MODEL_SUCCESS });
     });
   };
   

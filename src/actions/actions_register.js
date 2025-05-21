@@ -11,8 +11,6 @@ export const registerUser = (values) => dispatch => {
     formData.append('password', values.password);
 
     doPostFormData('/register', formData, (response) => {
-        saveToLocalStorage("api_key", response.data.api_key);
-        saveToLocalStorage("user_id", response.data.user_id);
         dispatch({ type: REGISTER_USER, payload: response });
     });
   };

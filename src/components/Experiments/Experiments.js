@@ -1,13 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Table } from 'reactstrap';
+import { Table, Button } from 'reactstrap';
+import TopToobar from '../TopToolbar/TopToolbar';
 import { GlobalContext } from '../App';
 import { faDownload, faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Experiments.scss';
 import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import { CircularProgress } from "@material-ui/core";
 
 const Experiments = () => {
+    const [isDownloading, setIsDownloading] = useState(false);
     const history = useHistory();
     const { actions, reduxState } = useContext(GlobalContext);
     const { state } = useLocation();
@@ -46,6 +49,18 @@ const Experiments = () => {
         actions.downloadModel(experimentId);
     };
 
+    const handleReportDownload = async () => {
+        try {
+          setIsDownloading(true);
+          await actions.downloadReport(project.id); // This now returns a proper Promise
+        } catch (error) {
+          console.error("Failed to download report:", error);
+        } finally {
+          setIsDownloading(false);
+        }
+      };
+      
+
     const openExperiment = (experiment) => {
         history.push({
             pathname: `/experiment/${experiment.id}`,
@@ -74,16 +89,29 @@ const Experiments = () => {
 
     if (sortMetric === 'accuracy' || sortMetric === 'f1') {
         combinedExperiments.sort((a, b) => {
-            var valA = a[sortMetric] !== undefined && a[sortMetric] !== null ? a[sortMetric] : -Infinity;
-            var valB = b[sortMetric] !== undefined && b[sortMetric] !== null ? b[sortMetric] : -Infinity;            
+            const valA = a[sortMetric] !== undefined && a[sortMetric] !== null ? a[sortMetric] : -Infinity;
+            const valB = b[sortMetric] !== undefined && b[sortMetric] !== null ? b[sortMetric] : -Infinity;
             return sortDirection === 'asc' ? valA - valB : valB - valA;
         });
     }
 
     return (
         <div>
+            <TopToobar />
             <div className="mt-4 p-5">
-                <h2>Experiments</h2>
+                <div className="d-flex justify-content-between align-items-center mb-4">
+                    <h2>Experiments</h2>
+                    <Button className="text-center" color="primary" onClick={handleReportDownload} disabled={isDownloading}>
+                        {isDownloading ? (
+                            <CircularProgress size={20} color="inherit" />
+                        ) : (
+                            <>
+                                <FontAwesomeIcon icon={faDownload} className="me-2" />
+                                {" "} Download Report
+                            </>
+                        )}
+                    </Button>
+                </div>
 
                 <Table striped responsive hover className="align-middle">
                     <thead>

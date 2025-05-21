@@ -15,20 +15,18 @@ const Signup = () => {
 
     const {actions, reduxState} = useContext(GlobalContext);
 
-    const onSubmit = (values) => {
+    const onSubmit = async (values) => {
         if (!_.isEmpty(values)) {
-            actions.registerUser(values);
+          try {
+            await actions.registerUser(values);  // Make sure this returns a Promise
             showSuccessAndRedirect("Signed Up Successfully", () => {
-                history.push("/login");
+              history.push("/login");
             });
-            
+          } catch (error) {
+            console.log('failed to signup')
+          }
         }
-    }
-
-    const {apiKey} = reduxState.register || "";
-    const {userId} = reduxState.userId || 0;
-
-    
+      };
 
     return (
         <Container className="login-container pl-35x pr-35x">
@@ -53,11 +51,11 @@ const Signup = () => {
                             component={renderFormInput}
                         />
                         <Field
-                            name="passowrd"
+                            name="password" 
                             type="password"
                             label="Password"
                             component={renderFormInput}
-                        />
+                            />
                         <Button
                             color="primary modal-footer-button"
                             className="fs-16 lh-21 wt-100p mt-15x"

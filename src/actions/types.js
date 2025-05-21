@@ -22,3 +22,7 @@ export const GET_PROFILE_FAILURE = "GET_PROFILE_FAILURE";
 export const GET_PROJECTS_REQUEST = 'GET_PROJECTS_REQUEST';
 export const GET_PROJECTS = 'GET_PROJECTS';
 export const GET_PROJECTS_FAILURE = 'GET_PROJECTS_FAILURE';
+
+export const DOWNLOAD_REPORT_REQUEST = "download_report_request";
+export const DOWNLOAD_REPORT_SUCCESS = "download_report_success";
+export const DOWNLOAD_REPORT_FAILURE = "download_report_failure";
