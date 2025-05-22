@@ -153,10 +153,8 @@ const Profile = () => {
                 <Typography className={classes.subTitle}>📈 Metrics Recorded: {stats.metricCount}</Typography>
               </CardContent>
             </Card>
-          </Grid>
 
-          <Grid item xs={12} md={6}>
-            <Card className={classes.card}>
+          <Card className={classes.card}>
               <CardContent className={classes.cardContent}>
                 <Typography variant="h6" className={classes.title}>Average Accuracy per Experiment</Typography>
                 {experiment_metrics.length > 0 ? (
@@ -176,27 +174,29 @@ const Profile = () => {
               </CardContent>
             </Card>
           </Grid>
+
           <Grid item xs={12} md={6}>
-  <Card className={classes.card}>
-    <CardContent className={classes.cardContent}>
-      <Typography variant="h6" className={classes.title}>Average Accuracy per Project</Typography>
-      {project_metrics.length > 0 ? (
-        <div className={classes.barChartContainer}>
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={project_metrics}>
-              <XAxis dataKey="project" />
-              <YAxis />
-              <Tooltip />
-              <Bar dataKey="accuracy" fill="#10b981" />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-      ) : (
-        <Typography className={classes.noMetrics}>No project metrics available.</Typography>
-      )}
-    </CardContent>
-  </Card>
-</Grid>
+          <Card className={classes.card}>
+            <CardContent className={classes.cardContent}>
+              <Typography variant="h6" className={classes.title}>Average Accuracy per Project</Typography>
+              {project_metrics.length > 0 ? (
+                <div className={classes.barChartContainer}>
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={project_metrics}>
+                      <XAxis dataKey="project" />
+                      <YAxis />
+                      <Tooltip />
+                      <Bar dataKey="accuracy" fill="#10b981" />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              ) : (
+                <Typography className={classes.noMetrics}>No project metrics available.</Typography>
+              )}
+            </CardContent>
+          </Card>
+          </Grid>
+
         </Grid>
       </Container>
     </>
